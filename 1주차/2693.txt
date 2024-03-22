@@ -1,0 +1,36 @@
+
+#include <stdio.h>
+#include <stdlib.h>//malloc, qsort라이브러리를 사용하기 위한 stdlib.h 헤더파일 사용
+
+int compare(const void* a, const void* b) { // 오름차순으로 정렬할 때 사용하는 비교함수
+    return (*(int*)a - *(int*)b);
+}
+
+int main(void) {
+    int** arr;
+    int num, i;
+    int count = 0;
+    scanf("%d", &num);
+
+    arr = (int**)malloc(sizeof(int*) * num); // num 개의 int 타입 메모리 공간에 10개의 int 타입 메모리 할당
+    for (i = 0; i < num; i++) {
+        arr[i] = (int*)malloc(sizeof(int) * 10);
+    }
+    for (int j = 0; j < num; j++) {	
+        for (int k = 0; k < 10; k++) {
+            scanf("%d", &arr[j][k]);
+        }
+    }
+    for (i = 0; i < num; i++) { 
+        qsort(arr[i], 10, sizeof(int), compare);
+    }
+    for (i = 0; i < num; i++) { //오름차순으로 정리했으므로 3번째로 큰 값이 위치하는 곳의 값 출력
+        printf("%d\n", arr[i][7]); 
+    }
+    for(i=0; i<num; i++) //메모리 해제
+    {
+        free(arr[i]);
+    }
+    free(arr);
+    return 0;
+}
