@@ -1,5 +1,3 @@
-﻿// ConsoleApplication3.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -28,5 +26,10 @@ int main(void) {
     for (i = 0; i < num; i++) {
         printf("%d\n", arr[i][7]);
     }
+    for(i=0; i<num; i++)
+    {
+        free(arr[i]);
+    }
+    free(arr);
     return 0;
 }
