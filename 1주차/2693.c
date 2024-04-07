@@ -8,7 +8,6 @@ int compare(const void* a, const void* b) {
 int main(void) {
     int** arr;
     int num, i;
-    int count = 0;
     scanf("%d", &num);
 
     arr = (int**)malloc(sizeof(int*) * num);
